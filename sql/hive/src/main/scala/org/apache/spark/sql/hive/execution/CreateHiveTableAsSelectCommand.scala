@@ -42,7 +42,7 @@ trait CreateHiveTableAsSelectBase extends DataWritingCommand {
 
     if (tableExists) {
       assert(mode != SaveMode.Overwrite,
-        s"Expect the table $tableIdentifier has been dropped when the save mode is Overwrite")
+        s"The table $tableIdentifier has been dropped when the save mode is Overwrite")
 
       if (mode == SaveMode.ErrorIfExists) {
         throw new AnalysisException(s"$tableIdentifier already exists.")
@@ -84,7 +84,8 @@ trait CreateHiveTableAsSelectBase extends DataWritingCommand {
     tableDesc: CatalogTable,
     tableExists: Boolean): DataWritingCommand
 
-  // A subclass should override this with the Class name of the concrete type expected to be
+  // A subclass should override this with the Class name of the concrete type 
+  ed to be
   // returned from `getWritingCommand`.
   def writingCommandClassName: String
 
